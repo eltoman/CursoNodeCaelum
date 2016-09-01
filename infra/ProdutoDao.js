@@ -4,16 +4,18 @@ function ProdutoDao(connection) {
 
 ProdutoDao.prototype.salva = function(livro, callback, callbackErro) {
     this._connection.query('INSERT INTO livros SET ?', livro, function(erro, result){
+      this._connection.end();
       if(erro == null){
           callback(result);
       }else{
           callbackErro(erro);
       }
-    };
+    });
 }
 
 ProdutoDao.prototype.lista = function(callback, callbackErro) {
   this._connection.query('select * from livros', function(erro, result){
+    this._connection.end();
     if(erro == null){
         callback(result);
     }else{
