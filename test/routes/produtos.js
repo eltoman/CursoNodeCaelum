@@ -18,4 +18,15 @@ describe('#ProdutosController', function(){
               .expect(200, done)
           }
       );
+
+      it('Nao cadastrar Produto invalido',
+          function(done){
+              request.post('/produtos')
+              .set('Accept', 'application/json')
+              .set('Content-Type', 'application/json')
+              .send({titulo:"", preco: 39, descricao: "oi"})
+              .expect('Content-Type', /application\/json/, done)
+              .expect(400)
+          }
+      );
 });
