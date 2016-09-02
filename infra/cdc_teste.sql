@@ -1,5 +1,5 @@
-drop database casadocodigo;
-create database casadocodigo;
+drop database casadocodigo_teste;
+create database casadocodigo_teste;
 use casadocodigo_teste;
 
 CREATE TABLE livros (
